@@ -1,0 +1,36 @@
+﻿@model GirisViewModel
+@{
+    ViewData["Title"] = "Giriş";
+}
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <h1 class="display-4 border-bottom text-center">@ViewData["Title"]</h1>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="row">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+        <div class="col-4 offset-4">
+            <div class="form-group mb-3 d-grid ">
+                <label class="form-label" asp-for="Ad">
+                    👩‍🔧 Adınız
+                    <input class="form-control" placeholder="isim giriniz" asp-for="Ad" /> <span asp-validation-for="Ad" class="text-danger small"></span>
+                </label>
+            </div>
+            <div class="form-group mb-3 d-grid ">
+                <label class="form-label" asp-for="Parola">
+                    🔑 Parolanız
+                    <input class="form-control" placeholder="parola" asp-for="Parola" />  <span asp-validation-for="Parola" class="text-danger small"></span>
+                </label>
+            </div>
+            <div class="form-group d-grid mb-3">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-right-to-bracket me-2"></i> Giriş
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+

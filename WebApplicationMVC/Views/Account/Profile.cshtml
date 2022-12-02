@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Profil";
+}
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <h1 class="display-4 border-bottom text-center">@ViewData["Title"]</h1>
+        <div asp-validation-summary="All" class="text-danger small"></div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col">
+        <form method="post" asp-action="ProfilChangeFullName">
+            <div class="input-group">
+                <div class="col-6">
+                    <label class="form-label">
+                        👩‍🔧 Tam Adınız
+                        <input class="form-control" placeholder="Ad Soyad" name="FullName" value="@ViewData["FullName"]" />
+                    </label>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-save me-2"></i> Adı Kaydet
+                    </button>
+                    <br />
+                    @if (ViewData["result"] != null && ViewData["result"] == "AdDegisti")
+                    {
+                        <span class="text-success small text-xl-start"> Tam ad güncellendi</span>
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col">
+        <form method="post" asp-action="ProfilChangePassword">
+            <div class="input-group">
+                <div class="col-6">
+                    <label class="form-label">
+                        🔑 Yeni Parolanız
+                        <input class="form-control" placeholder="Parola" name="Password" type="password" />
+                    </label>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-save me-2"></i> Parola Yenile
+                    </button>
+                    <br />
+                    @if (ViewData["result"] != null && ViewData["result"] == "ParolaDegisti")
+                    {
+                        <span class="text-success small"> Parola güncellendi</span>
+
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @if (ViewData["result"] != null && ViewData["result"] == "AdDegisti")
+    {
+        <script>
+            toastr["success"]("Tam ad güncellendi", "Profil");
+        </script>
+    }
+    @if (ViewData["result"] != null && ViewData["result"] == "ParolaDegisti")
+    {
+        <script>
+            toastr["success"]("Parola güncellendi", "Profil");
+        </script>
+    }
+}
